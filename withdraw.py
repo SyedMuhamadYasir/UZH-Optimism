@@ -4,8 +4,8 @@ import os
 import json
 from web3.exceptions import ContractLogicError
 
-L2_RPC = "http://130.60.144.77:9545"
-private_key= 'xxxxx'
+L2_RPC = "http://130.60.144.77:9545" # do not change
+private_key= 'xxxxx' # replace
 SENDER = Account.from_key(private_key).address
 
 w3_l2 = Web3(Web3.HTTPProvider(L2_RPC))
@@ -53,11 +53,11 @@ def try_simulate(token_addr):
         return True, None
     except ContractLogicError as cle:
         # cle may contain revert reason or empty data
-        print(' ContractLogicError during simulation:', cle)
+        # print(' ContractLogicError during simulation:', cle)
         # try to extract revert data if available
         try:
             data = cle.args[1]
-            print(' Revert data (hex):', data)
+            # print(' Revert data (hex):', data)
         except Exception:
             pass
         return False, cle
