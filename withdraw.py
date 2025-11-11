@@ -1,6 +1,7 @@
 from web3 import Web3
 from eth_account import Account
 import json
+import time
 
 
 L2_RPC = "http://130.60.144.77:9545" # do not change
@@ -51,3 +52,5 @@ tx_hash = w3_l2.eth.send_raw_transaction(signed.raw_transaction)
 print("L2 withdraw tx hash:", w3_l2.to_hex(tx_hash))
 rcpt = w3_l2.eth.wait_for_transaction_receipt(tx_hash)
 print("L2 status is " + str(rcpt.status)) #' 1 for success' | '0 for reverted'
+#print the current time
+print("Current time is " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + ", please record this time, you may need 20-30 minutes to finalize the withdrawal on L1")
